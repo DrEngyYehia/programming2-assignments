@@ -1,0 +1,80 @@
+from tkinter import *
+from tkinter import messagebox
+win=Tk()
+# add widgets here
+win.title('Bank Misr–Plan Yor Loan')
+win.geometry("600x650+350+30")
+win.configure(bg="grey")
+logo = PhotoImage(file="bank1.png")
+img= Label(win, text="Username",
+image=logo)
+img.pack()
+l1= Label(win, text="Plan Your Loan",bg="darkred",fg="white",bd=15,font=10)
+l1.pack()
+
+def loan_calculation():
+    amount_of_loan= float(e2.get())
+    years_number= float(e3.get())
+    if years_number == 1:
+        interest_in_one_year = amount_of_loan * 13.76 / 100
+        total_interests = interest_in_one_year * years_number
+        total_loan = amount_of_loan + total_interests
+        monthly_payment = total_loan / years_number * 12
+        result = f"Interest % = 13.76% \n Total Interest = {total_interests}\n Total Loan = {total_loan} \n Monthly Payment Required = {monthly_payment}"
+        output_label.config(text=result)
+
+    elif years_number == 3:
+        interest_in_one_year = amount_of_loan * 14.06 / 100
+        total_interests = interest_in_one_year *years_number
+        total_loan = amount_of_loan + total_interests
+        monthly_payment = total_loan / years_number * 12
+        result = f"Interest % = 14.06% \n Total Interest = {total_interests} \n Total Loan = {total_loan} \n Monthly Payment Required = {monthly_payment}"
+        output_label.config(text=result)
+
+    elif years_number == 5:
+        interest_in_one_year = amount_of_loan * 14.87 / 100
+        total_interests = interest_in_one_year * years_number
+        total_loan = amount_of_loan + total_interests
+        monthly_payment = total_loan / years_number * 12
+        result = f"Interest % = 14.87% \n Total Interest = {total_interests}\n Total Loan = {total_loan} \n Monthly Payment Required = {monthly_payment}"
+        output_label.config(text=result)
+
+    elif years_number == 7:
+        interest_in_one_year = amount_of_loan * 15.71 / 100
+        total_interests = interest_in_one_year * years_number
+        total_loan = amount_of_loan + total_interests
+        monthly_payment = total_loan / years_number * 12
+        result = f"Interest % = 15.71% \n Total Interest = {total_interests}\n Total Loan = {total_loan} \nMonthly Payment Required = {monthly_payment}"
+        output_label.config(text=result)
+    else:
+        messagebox.showerror("Error", "Invalid number of years. Please choose from 1, 3, 5, or 7.")
+def clear():
+ e1.delete(0,'end')
+ e2.delete(0,'end')
+ e3.delete(0,'end')
+ output_label.config(text='')
+
+def exit():
+    win.quit()
+
+l1=Label(win,text="Enter Your Job", font=16)
+l1.pack()
+e1=Entry(win,bd=9,bg="gray")
+e1.pack()
+l2 = Label(win, text="Enter Amount Of Loan",font=16)
+l2.pack()
+e2 = Entry(win,bd=9,bg="gray")
+e2.pack()
+l3 = Label(win, text="Enter Years Of Installments\n1 or 3 or 5 or 7 ",font=16)
+l3.pack()
+e3 = Entry(win, bd=9,bg="gray")
+e3.pack()
+b1 = Button(win, text="Calculate", command=loan_calculation, bg="green",font=20)
+b1.pack()
+output_label = Label(win)
+output_label.pack()
+B2=Button(win,text="Clear", command=clear, bg="green",font=20)
+B2.pack()
+B3=Button(win,text="Exit",command=exit ,bg="red",font=20)
+B3.pack(side = RIGHT)
+win.mainloop()
